@@ -8,7 +8,7 @@ function setup() {
     h1 = createElement("h1","Visualization of TSP with Dynamic programming");
     h1.style('text-align:center');
     
-    var p1 = createP("Please enter the number of seeds in below provided box. This seeds are generated randomly.");
+    var p1 = createP("Please upload data, use the random point plotter or simply click anywhere on the canvas to get vertices/cities.");
     
     createP("");
     var p=createP("Types of Input: ");
@@ -17,9 +17,6 @@ function setup() {
     input1.class('inputStyle');
     buttonGo = createButton("Plot Random Cities");
     buttonFile= createButton("Upload data");
-	buttonPlot= createButton("Click on the canvas to plot points");
-	buttonPlot.id('nonBut');
-	document.getElementById('nonBut').style="cursor:default";
 	buttonFile.id("fileDiv");
 	buttonFile.mousePressed(triggerFile);
     var div=createDiv();
