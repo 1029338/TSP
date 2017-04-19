@@ -62,6 +62,16 @@ function draw() {
     background(0);
 	smooth();
     
+    if(cities.length == 1){
+        noStroke();
+        fill(255);
+        ellipse(cities[0].xCoordinate,cities[0].yCoordinate,16,16);
+        
+        fill(255,0,0);
+        textAlign(CENTER,CENTER);
+        textStyle(BOLD)
+        text(cities[0].name, cities[0].xCoordinate, cities[0].yCoordinate);
+    }
     for(var i=0; i < edges.length;i++){
         edges[i].displayEdge();
     }
