@@ -1,0 +1,59 @@
+@font-face {
+    font-family: HeaderFont;
+    src: url(libraries/HeaderFont.otf);
+}
+
+@font-face {
+    font-family: MainFont;
+    src: url(libraries/MainFont.ttf);
+}
+
+#para{
+display:inline;	
+}
+
+button{
+	width: auto !important;
+    background: #696969 !important;
+    font: 13px MainFont, sans-serif !important;
+    color: white !important;
+    padding: 6px 20px 7px 20px !important;
+    border-radius: 0px !important;
+	border:0px;
+	margin:10px;
+	cursor:pointer;
+}
+
+#upfilediv{
+	height: 0px; 
+	width: 0px;
+	overflow:hidden;
+}
+
+.inputStyle{
+	font-family: 'MainFont', sans-serif;
+    background: #fff;
+    border: 1px solid #696969;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    vertical-align: middle;
+    color: #777;
+    font-size: 13px;
+	
+}
+
+body {
+	text-align:center;
+	background-color: #ccc;
+	font: 400 13px 'MainFont', sans-serif;
+}
+
+h1{
+	font: 600 25px 'HeaderFont', sans-serif !important;
+	color: #696969;
+}
+.canvasStyle{
+	background-color:black;
+}
