@@ -44,6 +44,26 @@ button{
 	
 }
 
+#infoP{
+	color:white;
+}
+
+#canspan{
+	float:left;
+	display:inline;
+	margin:20px;
+}
+
+#infoSpan{
+	text-align:center;
+	float:right;
+	display:inline;
+	height:422.4px;
+	width:422.4px;
+	background-color:black;
+	margin:20px;
+}
+
 body {
 	text-align:center;
 	background-color: #ccc;

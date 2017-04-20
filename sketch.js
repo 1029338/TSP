@@ -25,8 +25,20 @@ function setup() {
 	fileSelect.id('upfile');
 	fileSelect.parent('upfilediv');
 	createP("");
-    var can=createCanvas(800,400);
+	var maindiv=createDiv("");
+	maindiv.id('maindiv');
+	var canspan=createDiv("");
+	canspan.id('canspan');
+	infoSpan=createDiv("");
+	infoSpan.id('infoSpan');
+	canspan.parent('maindiv');
+	infoSpan.parent('maindiv');
+	var infoP=createP(distanceMatrix);
+	infoP.id('infoP');
+	infoP.parent('infoSpan');
+    var can=createCanvas(800,422.4);
 	can.class('canvasStyle');
+	can.parent('canspan');
     createP("");
     
     buttonStart = createButton("Start");
@@ -115,6 +127,21 @@ function populateEdges(){
             }
         }
     }
+	
+	document.getElementById('infoP').innerHTML="Distance Matrix<br>";
+	for(var i = 0; i < distanceMatrix.length; i++) {
+		document.getElementById('infoP').innerHTML+="<br>"
+		if(i==0)
+			document.getElementById('infoP').innerHTML+="[";
+		for(var j = 0; j < distanceMatrix[i].length; j++) {
+			if(j!=distanceMatrix[i].length-1)
+				document.getElementById('infoP').innerHTML+=distanceMatrix[i][j]+"&nbsp;&nbsp;,&nbsp;&nbsp;";
+			else
+				document.getElementById('infoP').innerHTML+=distanceMatrix[i][j]+"&nbsp;&nbsp;";
+		}
+		if(i==distanceMatrix.length-1)
+			document.getElementById('infoP').innerHTML+="]";
+	}
     //console.log(distanceMatrix);
     //loop();
 }
