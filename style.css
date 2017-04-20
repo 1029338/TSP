@@ -17,6 +17,16 @@ display:inline;
 	text-align:center;
 }
 
+#div{
+	display: inline-block;
+	color:white;
+	width:300px;
+	background-color:black;
+	height:80px;
+	padding:5px;
+	overflow-y:auto;
+	position: relative;
+}
 
 button{
 	width: auto !important;
@@ -36,6 +46,10 @@ button{
 	overflow:hidden;
 }
 
+#mainDiv{
+	position:absolute;
+}
+
 .inputStyle{
 	font-family: 'MainFont', sans-serif;
     background: #fff;
@@ -52,12 +66,14 @@ button{
 
 #infoP{
 	color:white;
+	position:relative;
 }
 
 #canspan{
 	float:left;
 	display:inline;
 	margin:20px;
+	position:relative;
 }
 
 #infoSpan{

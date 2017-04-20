@@ -25,6 +25,8 @@ function setup() {
 	fileSelect.id('upfile');
 	fileSelect.parent('upfilediv');
 	createP("");
+	var div=createDiv("Subproblems");
+	div.id('div');
 	var maindiv=createDiv("");
 	maindiv.id('maindiv');
 	var canspan=createDiv("");
@@ -257,6 +259,8 @@ function TSP(startCity, setOfCities, cities ){
             }
         }
 		redraw();
+		console.log(subProblemSolution);
+		document.getElementById('div').innerHTML+="<br>Min Distance:&nbsp;"+subProblemSolution.minDistance+"&nbsp;&nbsp;&nbsp;Path:&nbsp;"+subProblemSolution.path;		
         return subProblemSolution;
     }
 }
