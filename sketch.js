@@ -38,7 +38,7 @@ function setup() {
 	var infoP=createP(distanceMatrix);
 	infoP.id('infoP');
 	infoP.parent('infoSpan');
-    var can=createCanvas(800,422.4);
+    var can=createCanvas(800,350);
 	can.class('canvasStyle');
 	can.parent('canspan');
     createP("");
