@@ -15,15 +15,7 @@ function setup() {
     input1 = createInput();
     input1.class('inputStyle');
     buttonGo = createButton("Plot Random Cities");
-    buttonFile= createButton("Upload data");
     buttonStart = createButton("Start");
-	buttonFile.id("fileDiv");
-	buttonFile.mousePressed(triggerFile);
-    var div=createDiv();
-	div.id('upfilediv');
-	var fileSelect = createFileInput(fileUploaded, 'multiple');
-	fileSelect.id('upfile');
-	fileSelect.parent('upfilediv');
 	createP("");
 	var div=createDiv("Subproblems");
 	div.id('div');
@@ -46,24 +38,6 @@ function setup() {
     buttonStart.mousePressed(buttonStartTSP);
     frameRate(200);
 }
-
-
-function fileUploaded(file) {
-
-  var table = loadTable(file.name);
-  rowCount = table.getRowCount();
-  for (var row = 0; row < rowCount; row++) {
-    
-    var x = table.getRow(row).get(1);
-    var y = table.getRow(row).get(2);
-    
-  console.write("("+ x + " , "+y+")");
-	}
-}
-
- function triggerFile(file) {
-  document.getElementById("upfile").click();
- }
 
 function draw() {
     
