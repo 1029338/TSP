@@ -2,7 +2,6 @@ var cities = [];
 var edges = [];
 var distanceMatrix = [];
 var cityNumber = 0;
-var myTimerSoltuion;
 
 function setup() {
     h1 = createElement("h1","Visualization of TSP with Dynamic programming");
@@ -17,6 +16,7 @@ function setup() {
     input1.class('inputStyle');
     buttonGo = createButton("Plot Random Cities");
     buttonFile= createButton("Upload data");
+    buttonStart = createButton("Start");
 	buttonFile.id("fileDiv");
 	buttonFile.mousePressed(triggerFile);
     var div=createDiv();
@@ -40,13 +40,7 @@ function setup() {
 	can.class('canvasStyle');
 	can.parent('canspan');
     createP("");
-    
-    buttonStart = createButton("Start");
-    createP("");
-    //buttonNext = createButton("Next");
-
     buttonGo.mousePressed(buttonPlotRandomSeeds);
-   // buttonNext.mousePressed(buttonNextTSP);
     buttonStart.mousePressed(buttonStartTSP);
     frameRate(200);
 }
@@ -91,12 +85,13 @@ function draw() {
 }
 
 function mousePressed(){		
-    cityNumber++;		
-    if(0 <= mouseX && mouseX <= width && 0 <= mouseY && mouseY <= height){		
+    if(0 <= mouseX && mouseX <= width && 0 <= mouseY && mouseY <= height){
+        cityNumber++;
         cities.push(new city(mouseX,mouseY,cityNumber));		
         //console.log(cities);		
         populateEdges();		
-    }		
+    }
+    console.log(cities.length);
     loop();		
 }
 
