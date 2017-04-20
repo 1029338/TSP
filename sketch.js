@@ -128,19 +128,18 @@ function populateEdges(){
         }
     }
 	
-	document.getElementById('infoP').innerHTML="Distance Matrix<br>";
+	document.getElementById('infoP').innerHTML="Distance Matrix<br><br>";
 	for(var i = 0; i < distanceMatrix.length; i++) {
-		document.getElementById('infoP').innerHTML+="<br>"
-		if(i==0)
-			document.getElementById('infoP').innerHTML+="[";
+		if(i==0){
+				for(var j = 0; j < distanceMatrix[i].length; j++) {
+					document.getElementById('infoP').innerHTML+="<span class='padSpan'>"+(j+1)+"</span>";
+				}
+				document.getElementById('infoP').innerHTML+="<br>";
+			}
+			document.getElementById('infoP').innerHTML+="<br><span class='padSpan'>"+(i+1)+"</span>";
 		for(var j = 0; j < distanceMatrix[i].length; j++) {
-			if(j!=distanceMatrix[i].length-1)
-				document.getElementById('infoP').innerHTML+=distanceMatrix[i][j]+"&nbsp;&nbsp;,&nbsp;&nbsp;";
-			else
-				document.getElementById('infoP').innerHTML+=distanceMatrix[i][j]+"&nbsp;&nbsp;";
+				document.getElementById('infoP').innerHTML+="<span class='padSpan'>"+distanceMatrix[i][j]+"</span>";
 		}
-		if(i==distanceMatrix.length-1)
-			document.getElementById('infoP').innerHTML+="]";
 	}
     //console.log(distanceMatrix);
     //loop();

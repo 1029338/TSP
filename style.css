@@ -12,6 +12,12 @@
 display:inline;	
 }
 
+.padSpan{
+	padding:10px;
+	text-align:center;
+}
+
+
 button{
 	width: auto !important;
     background: #696969 !important;
