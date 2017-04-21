@@ -15,22 +15,28 @@ function setup() {
     input1 = createInput();
     input1.class('inputStyle');
     buttonGo = createButton("Plot Random Cities");
+    buttonFile= createButton("Upload data");
     buttonStart = createButton("Start");
+	buttonFile.id("fileDiv");
+	buttonFile.mousePressed(triggerFile);
+    var div=createDiv();
+	div.id('upfilediv');
+	var fileSelect = createFileInput(fileUploaded, 'multiple');
+	fileSelect.id('upfile');
+	fileSelect.parent('upfilediv');
 	createP("");
-	var div=createDiv("Subproblems");
-	div.id('div');
 	var maindiv=createDiv("");
 	maindiv.id('maindiv');
 	var canspan=createDiv("");
 	canspan.id('canspan');
-	infoSpan=createDiv("");
+	var infoSpan=createDiv("");
 	infoSpan.id('infoSpan');
 	canspan.parent('maindiv');
 	infoSpan.parent('maindiv');
 	var infoP=createP(distanceMatrix);
 	infoP.id('infoP');
 	infoP.parent('infoSpan');
-    var can=createCanvas(800,350);
+    var can=createCanvas(800,422.4);
 	can.class('canvasStyle');
 	can.parent('canspan');
     createP("");
@@ -38,6 +44,24 @@ function setup() {
     buttonStart.mousePressed(buttonStartTSP);
     frameRate(200);
 }
+
+
+function fileUploaded(file) {
+
+  var table = loadTable(file.name);
+  rowCount = table.getRowCount();
+  for (var row = 0; row < rowCount; row++) {
+    
+    var x = table.getRow(row).get(1);
+    var y = table.getRow(row).get(2);
+    
+  console.write("("+ x + " , "+y+")");
+	}
+}
+
+ function triggerFile(file) {
+  document.getElementById("upfile").click();
+ }
 
 function draw() {
     
@@ -67,7 +91,6 @@ function mousePressed(){
         //console.log(cities);		
         populateEdges();		
     }
-    console.log(cities.length);
     loop();		
 }
 
@@ -167,6 +190,11 @@ function buttonStartTSP() {
 }
 
 function TSP(startCity, setOfCities, cities ){
+    var darshCities = [];
+    for(var darsh=0;darsh<setOfCities.length;darsh++){
+        darshCities.push(setOfCities[darsh].name);
+    }
+    //console.log("Open  Subproblem - " + "StartCity : " + startCity.name + " SetOfCities : "+darshCities);
     if(setOfCities.length == 1){
         var subProblemSolutionToRoot;
         var pathToRoot;
@@ -174,6 +202,7 @@ function TSP(startCity, setOfCities, cities ){
         var temp2 = setOfCities[0].distance(cities[0]);
         pathToRoot = new Array(startCity.name,setOfCities[0].name,cities[0].name);
         subProblemSolutionToRoot = new SubProblemSolution(temp1+temp2,pathToRoot);
+        //console.log("Close Subproblem - " + "StartCity : " + startCity.name + " SetOfCities : "+darshCities);
         return (subProblemSolutionToRoot);
     }
     else{
@@ -220,7 +249,7 @@ function TSP(startCity, setOfCities, cities ){
                 }
                 //redraw();
             }
-            else{
+            /*else{
                 city1 = cities[subPath[a]-1];
                 city2 = cities[subPath[0]-1];
                 var ans = findEdgeIndex(city1,city2);
@@ -230,11 +259,10 @@ function TSP(startCity, setOfCities, cities ){
                     edges[ans[index]].displayEdge();
                 }
                 //redraw();
-            }
+            }*/
         }
-		redraw();
-		console.log(subProblemSolution);
-		document.getElementById('div').innerHTML+="<br>Min Distance:&nbsp;"+subProblemSolution.minDistance+"&nbsp;&nbsp;&nbsp;Path:&nbsp;"+subProblemSolution.path;		
+		//redraw();
+        console.log("Close Subproblem - " + "StartCity : " + startCity.name + " SetOfCities : " + darshCities + "\t\t\tSolution : " + subProblemSolution.path + " \tMinDistance : " + subProblemSolution.minDistance );
         return subProblemSolution;
     }
 }
