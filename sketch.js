@@ -2,6 +2,7 @@ var cities = [];
 var edges = [];
 var distanceMatrix = [];
 var cityNumber = 0;
+var center;
 
 function setup() {
     h1 = createElement("h1","Visualization of TSP with Dynamic programming");
@@ -17,19 +18,19 @@ function setup() {
     buttonGo = createButton("Plot Random Cities");
     buttonStart = createButton("Start");
 	createP("");
-	var div=createDiv("Subproblems");
+	var div=createDiv("Subproblems<br>");
 	div.id('div');
 	var maindiv=createDiv("");
 	maindiv.id('maindiv');
 	var canspan=createDiv("");
 	canspan.id('canspan');
-	infoSpan=createDiv("");
+	infoSpan=createDiv("Distance Matrix<br><br>");
 	infoSpan.id('infoSpan');
+	infoSpanNew=createDiv("");
+	infoSpanNew.id('infoSpanNew');
 	canspan.parent('maindiv');
 	infoSpan.parent('maindiv');
-	var infoP=createP(distanceMatrix);
-	infoP.id('infoP');
-	infoP.parent('infoSpan');
+	infoSpanNew.parent('infoSpan');
     var can=createCanvas(800,350);
 	can.class('canvasStyle');
 	can.parent('canspan');
@@ -97,17 +98,38 @@ function populateEdges(){
         }
     }
 	
-	document.getElementById('infoP').innerHTML="Distance Matrix<br><br>";
+	var temp=document.getElementById('infoSpanNew');
+	if(temp.hasChildNodes())
+		temp.removeChild(center);
+	center= document.createElement('center');
+	var table = document.createElement('table'), tr,trHead, th, td, row, cell;
+	center.appendChild(table);
+	temp.appendChild(center);
 	for(var i = 0; i < distanceMatrix.length; i++) {
 		if(i==0){
-				for(var j = 0; j < distanceMatrix[i].length; j++) {
-					document.getElementById('infoP').innerHTML+="<span class='padSpan'>"+(j+1)+"</span>";
+			trHead = document.createElement('tr');
+			table.appendChild(trHead);
+			trHead.className='dynamicSpanHead';
+				for(var j = 0; j <= distanceMatrix[i].length; j++) {
+					th = document.createElement('th');
+					th.style='padding:10px;';
+					trHead.appendChild(th);
+					if(j==0)
+						th.innerHTML="";
+					else
+						th.innerHTML=j;
 				}
-				document.getElementById('infoP').innerHTML+="<br>";
 			}
-			document.getElementById('infoP').innerHTML+="<br><span class='padSpan'>"+(i+1)+"</span>";
+		tr = document.createElement('tr');
+		table.appendChild(tr);
+		tr.className='dynamicSpan';
+		td = document.createElement('td');
+		tr.appendChild(td);
+		td.innerHTML=i+1;
 		for(var j = 0; j < distanceMatrix[i].length; j++) {
-				document.getElementById('infoP').innerHTML+="<span class='padSpan'>"+distanceMatrix[i][j]+"</span>";
+			td = document.createElement('td');
+			tr.appendChild(td);
+			td.innerHTML=distanceMatrix[i][j];
 		}
 	}
     //console.log(distanceMatrix);
@@ -238,8 +260,9 @@ function TSP(startCity, setOfCities, cities ){
         }
 		//redraw();
 		//console.log(subProblemSolution);
+				
         console.log("Close Subproblem - " + "StartCity : " + startCity.name + " SetOfCities : " + darshCities + " Solution : " + subProblemSolution.path + " MinDistance : " + subProblemSolution.minDistance );
-		document.getElementById('div').innerHTML+="<br>Min Distance:&nbsp;"+subProblemSolution.minDistance+"&nbsp;&nbsp;&nbsp;Path:&nbsp;"+subProblemSolution.path;		
+		document.getElementById('div').innerHTML+="<br>StartCity&nbsp;:&nbsp;" + startCity.name + "&nbsp;&nbsp;&nbsp;SetOfCities&nbsp;:&nbsp;" + darshCities + "&nbsp;&nbsp;&nbsp;Min Distance&nbsp;:&nbsp;"+subProblemSolution.minDistance+"&nbsp;&nbsp;&nbsp;Solution:&nbsp;"+subProblemSolution.path;		
         return subProblemSolution;
     }
 }

@@ -20,7 +20,7 @@ display:inline;
 #div{
 	display: inline-block;
 	color:white;
-	width:300px;
+	width:600px;
 	background-color:black;
 	height:80px;
 	padding:5px;
@@ -64,10 +64,6 @@ button{
 	
 }
 
-#infoP{
-	color:white;
-	position:relative;
-}
 
 #canspan{
 	float:left;
@@ -76,14 +72,23 @@ button{
 	position:relative;
 }
 
+table{
+	color:white !important;
+	font: 400 12px 'MainFont', sans-serif;
+}
+
+
 #infoSpan{
+	color:white;
 	text-align:center;
 	float:right;
 	display:inline;
-	height:350px;
+	height:340px;
 	width:422.4px;
 	background-color:black;
 	margin:20px;
+	font: 400 18px 'MainFont', sans-serif;
+	padding-top:10px;
 }
 
 body {
