@@ -1,4 +1,5 @@
-# TSP
+# TSP_DP
+# Travelling salseman problem implement with dynamic programming.
 
 You can download this project and open the index.html file in the any browser.
 Put the number of cities in input box and click on button "Plot Random Citites".
