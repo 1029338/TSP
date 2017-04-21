@@ -63,11 +63,9 @@ function draw() {
 function mousePressed(){		
     if(0 <= mouseX && mouseX <= width && 0 <= mouseY && mouseY <= height){
         cityNumber++;
-        cities.push(new city(mouseX,mouseY,cityNumber));		
-        //console.log(cities);		
+        cities.push(new city(mouseX,mouseY,cityNumber));
         populateEdges();		
     }
-    console.log(cities.length);
     loop();		
 }
 
@@ -167,6 +165,11 @@ function buttonStartTSP() {
 }
 
 function TSP(startCity, setOfCities, cities ){
+    var darshCities = [];
+    for(var darsh=0;darsh<setOfCities.length;darsh++){
+        darshCities.push(setOfCities[darsh].name);
+    }
+    //console.log("Open  Subproblem - " + "StartCity : " + startCity.name + " SetOfCities : "+darshCities);
     if(setOfCities.length == 1){
         var subProblemSolutionToRoot;
         var pathToRoot;
@@ -174,6 +177,7 @@ function TSP(startCity, setOfCities, cities ){
         var temp2 = setOfCities[0].distance(cities[0]);
         pathToRoot = new Array(startCity.name,setOfCities[0].name,cities[0].name);
         subProblemSolutionToRoot = new SubProblemSolution(temp1+temp2,pathToRoot);
+        //console.log("Close Subproblem - " + "StartCity : " + startCity.name + " SetOfCities : "+darshCities);
         return (subProblemSolutionToRoot);
     }
     else{
@@ -220,7 +224,7 @@ function TSP(startCity, setOfCities, cities ){
                 }
                 //redraw();
             }
-            else{
+            /*else{
                 city1 = cities[subPath[a]-1];
                 city2 = cities[subPath[0]-1];
                 var ans = findEdgeIndex(city1,city2);
@@ -230,10 +234,11 @@ function TSP(startCity, setOfCities, cities ){
                     edges[ans[index]].displayEdge();
                 }
                 //redraw();
-            }
+            }*/
         }
-		redraw();
-		console.log(subProblemSolution);
+		//redraw();
+		//console.log(subProblemSolution);
+        console.log("Close Subproblem - " + "StartCity : " + startCity.name + " SetOfCities : " + darshCities + " Solution : " + subProblemSolution.path + " MinDistance : " + subProblemSolution.minDistance );
 		document.getElementById('div').innerHTML+="<br>Min Distance:&nbsp;"+subProblemSolution.minDistance+"&nbsp;&nbsp;&nbsp;Path:&nbsp;"+subProblemSolution.path;		
         return subProblemSolution;
     }
@@ -250,7 +255,3 @@ function findEdgeIndex(city1,city2){
     }
     return ans;
 }
-
-/*function buttonNextTSP() {
-    NextClicked = true;
-}*/
